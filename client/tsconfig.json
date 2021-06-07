@@ -13,7 +13,7 @@
     "target": "es2015",
     "noImplicitUseStrict": true,
     "module": "es2020",
-    "lib": ["es2018", "dom"]
+    "lib": ["es2019", "es2018", "dom"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false
