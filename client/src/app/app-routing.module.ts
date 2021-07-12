@@ -1,3 +1,4 @@
+import { MemberDetailedResolver } from './_resolvers/member-detailed.resolver';
 import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { MessagesComponent } from './messages/messages.component';
@@ -25,7 +26,11 @@ const routes: Routes = [
         canActivate: [AuthGuard],
       },
       { path: 'members', component: MemberDetailComponent },
-      { path: 'members/:username', component: MemberDetailComponent },
+      {
+        path: 'members/:username',
+        component: MemberDetailComponent,
+        resolve: { member: MemberDetailedResolver },
+      },
       {
         path: 'member/edit',
         component: MemberEditComponent,

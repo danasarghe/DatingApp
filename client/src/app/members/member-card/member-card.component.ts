@@ -6,20 +6,21 @@ import { Member } from 'src/app/_models/members';
 @Component({
   selector: 'app-member-card',
   templateUrl: './member-card.component.html',
-  styleUrls: ['./member-card.component.css']
+  styleUrls: ['./member-card.component.css'],
 })
 export class MemberCardComponent implements OnInit {
-@Input() member: Member;
+  @Input() member: Member;
 
-  constructor(private membersService: MembersService, private toastr: ToastrService) { }
+  constructor(
+    private membersService: MembersService,
+    private toastr: ToastrService
+  ) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  addLike(member: Member) {
+    this.membersService.addLike(member.username).subscribe(() => {
+      this.toastr.success('You have liked ' + member.knownAs);
+    });
   }
-
-  addLike(member: Member){
-    this.membersService.addLike(member.username).subscribe(() =>{
-      this.toastr.success('You have liked' + member.knownAs);
-    })
-  }
-
 }
